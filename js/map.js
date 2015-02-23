@@ -21,7 +21,8 @@ var MapaAlojamientos = (function () {
                 "url": "",
                 "precio": "",
                 "personas": 4,
-                "habitaciones": 4
+                "habitaciones": 4,
+                "tipo": "apartamento"
             },
             {
                 "titulo": "alojamiento2",
@@ -29,7 +30,8 @@ var MapaAlojamientos = (function () {
                 "lng": 150.644,
                 "descripcion": "descripcion de prueba2",
                 "img": "http://ambiance.itsolutions.es/alquiler/photos/bk_ambiance/1419869280eee0fc9d3bd2a7882d9e7257aca3e040/big1419869280932af41dcd4a99953d13e92fb8a56668.jpg",
-                "url": ""
+                "url": "",
+                "tipo": "villa"
             }
         ];
 
@@ -58,14 +60,24 @@ var MapaAlojamientos = (function () {
     };
 
 
-    cls.prototype.addMark = function addMark(titulo, lat, lng, descripcion, img) {
+    cls.prototype.addMark = function addMark(titulo, lat, lng, descripcion, img, url, tipo) {
         var marker, content, infoWindow;
+
+        cls.prototype.getIcon = function getIcon() {
+            switch (tipo) {
+
+            case "apartamento":
+                return "https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-32.png";
+            default:
+                return "";
+            }
+        };
 
         marker = new google.maps.Marker({
             position: this.getLatLng(lat, lng),
             map: this.map,
             title: titulo,
-            icon: "https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-32.png"
+            icon: this.getIcon()
         });
 
         content = this.getContent(titulo, descripcion, img);
@@ -83,6 +95,7 @@ var MapaAlojamientos = (function () {
 
             marker.infoWindow.open(this.map, marker);
 
+            this.map.panTo(this.getLatLng(lat, lng));
             this.lastMarker = this.actualMarker;
         };
 
@@ -103,7 +116,15 @@ var MapaAlojamientos = (function () {
         this.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
         for (i = 0; i < this.alojamientos.length; i = i + 1) {
-            this.addMark(this.alojamientos[i].titulo, this.alojamientos[i].lat, this.alojamientos[i].lng, this.alojamientos[i].descripcion, this.alojamientos[i].img, this.alojamientos[i].url);
+            this.addMark(
+                this.alojamientos[i].titulo,
+                this.alojamientos[i].lat,
+                this.alojamientos[i].lng,
+                this.alojamientos[i].descripcion,
+                this.alojamientos[i].img,
+                this.alojamientos[i].url,
+                this.alojamientos[i].tipo
+            );
         }
     };
 
