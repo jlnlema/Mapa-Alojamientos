@@ -10,6 +10,8 @@ var MapaAlojamientos = (function () {
         this.lastMarker = null;
         this.actualMarker = null;
         this.map = null;
+        this.mc = null;
+        this.mcOptions = {gridSize: 50, maxZoom: 15};
 
         this.alojamientos = [
             {
@@ -108,8 +110,8 @@ var MapaAlojamientos = (function () {
         var mapOptions, i;
 
         mapOptions = {
-            zoom: 8,
-            center: new google.maps.LatLng(-34.397, 150.644),
+            zoom: 2,
+            center: new google.maps.LatLng(0, 0),
             disableDefaultUI: true
         };
 
@@ -126,6 +128,8 @@ var MapaAlojamientos = (function () {
                 this.alojamientos[i].tipo
             );
         }
+
+        this.mc = new MarkerClusterer(this.map, this.todos, this.mcOptions);
     };
 
     return cls;
