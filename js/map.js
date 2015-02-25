@@ -1,17 +1,52 @@
-/*global google, window, document*/
+/*global google, window, document, MarkerClusterer*/
 
 var MapaAlojamientos = (function () {
     "use strict";
 
     var cls = function () {
         this.todos = [];
-        this.zoom = 8;
-        this.centro = null;
+        this.zoom = 2;
+        this.centro = this.getLatLng(0, 0);
         this.lastMarker = null;
         this.actualMarker = null;
         this.map = null;
         this.mc = null;
-        this.mcOptions = {gridSize: 50, maxZoom: 15};
+        this.mcOptions = {
+            "gridSize": 50,
+            "maxZoom": 15,
+            "styles": [
+                {
+                    textColor: "white",
+                    height: 53,
+                    url: "https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-32.png",
+                    width: 53
+                },
+                {
+                    textColor: "white",
+                    height: 56,
+                    url: "https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-32.png",
+                    width: 56
+                },
+                {
+                    textColor: "white",
+                    height: 66,
+                    url: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/m3.png",
+                    width: 66
+                },
+                {
+                    textColor: "white",
+                    height: 78,
+                    url: "https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-32.png",
+                    width: 78
+                },
+                {
+                    textColor: "white",
+                    height: 90,
+                    url: "https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-32.png",
+                    width: 90
+                }
+            ]
+        };
 
         this.alojamientos = [
             {
@@ -61,25 +96,24 @@ var MapaAlojamientos = (function () {
         return latLng;
     };
 
+    cls.prototype.getIcon = function getIcon(tipo) {
+        switch (tipo) {
+
+        case "apartamento":
+            return "https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-32.png";
+        default:
+            return "";
+        }
+    };
 
     cls.prototype.addMark = function addMark(titulo, lat, lng, descripcion, img, url, tipo) {
         var marker, content, infoWindow;
-
-        cls.prototype.getIcon = function getIcon() {
-            switch (tipo) {
-
-            case "apartamento":
-                return "https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-32.png";
-            default:
-                return "";
-            }
-        };
 
         marker = new google.maps.Marker({
             position: this.getLatLng(lat, lng),
             map: this.map,
             title: titulo,
-            icon: this.getIcon()
+            icon: this.getIcon(tipo)
         });
 
         content = this.getContent(titulo, descripcion, img);
@@ -110,8 +144,8 @@ var MapaAlojamientos = (function () {
         var mapOptions, i;
 
         mapOptions = {
-            zoom: 2,
-            center: new google.maps.LatLng(0, 0),
+            zoom: this.zoom,
+            center: this.centro,
             disableDefaultUI: true
         };
 
