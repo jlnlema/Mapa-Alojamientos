@@ -4,14 +4,14 @@ var MapaAlojamientos = (function () {
     "use strict";
 
     var cls = function () {
-        this.todos = [];
-        this.zoom = 2;
-        this.centro = this.getLatLng(0, 0);
-        this.lastMarker = null;
-        this.actualMarker = null;
-        this.map = null;
-        this.mc = null;
-        this.mcOptions = {
+        this.todos = []; //Array donde se guardan los markers de los alojamientos
+        this.zoom = 2;   //El zoom del mapa
+        this.centro = this.getLatLng(0, 0); //Centro del mapa
+        this.lastMarker = null; //Aqui se guardará el último marker pulsado
+        this.actualMarker = null; //Aqui se guardará el marker actual
+        this.map = null; //inicializamos el mapa
+        this.mc = null; //inicializamos el cluster
+        this.mcOptions = {  //Opciones del cluster
             "gridSize": 50,
             "maxZoom": 15,
             "styles": [
@@ -48,7 +48,7 @@ var MapaAlojamientos = (function () {
             ]
         };
 
-        this.alojamientos = [
+        this.alojamientos = [  //JSON con los alojamientos
             {
                 "titulo": "alojamiento1",
                 "lat": -34.397,
@@ -76,6 +76,13 @@ var MapaAlojamientos = (function () {
 
     };
 
+/**
+ * Devuelve el contenido del infoWindow
+ * @param {string} titulo
+ * @param {string} descripcion
+ * @param {string} img url
+ * @return {string} html del infoWindow
+ */
     cls.prototype.getContent = function getContent(titulo, descripcion, img) {
         var content;
 
@@ -88,6 +95,12 @@ var MapaAlojamientos = (function () {
         return content;
     };
 
+/**
+* Devuelve la latitud y la longitud formateada
+* @param {Number} Latitud
+* @param {Number} Longitud
+* @return {LatLng} Longitud y latitud
+*/
     cls.prototype.getLatLng = function getLatLng(lat, lng) {
         var latLng;
 
