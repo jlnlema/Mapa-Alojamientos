@@ -14,38 +14,69 @@ var MapaAlojamientos = (function () {
         this.mcOptions = {  //Opciones del cluster
             "gridSize": 50,
             "maxZoom": 15,
-            "styles": [
-                {
-                    textColor: "white",
-                    height: 53,
-                    url: "https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-32.png",
-                    width: 53
-                },
-                {
-                    textColor: "white",
-                    height: 56,
-                    url: "https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-32.png",
-                    width: 56
-                },
-                {
-                    textColor: "white",
-                    height: 66,
-                    url: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/m3.png",
-                    width: 66
-                },
-                {
-                    textColor: "white",
-                    height: 78,
-                    url: "https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-32.png",
-                    width: 78
-                },
-                {
-                    textColor: "white",
-                    height: 90,
-                    url: "https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-32.png",
-                    width: 90
-                }
-            ]
+//            "styles": [
+//                {
+//                    textColor: "white",
+//                    height: 53,
+//                    url: "https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-32.png",
+//                    width: 53
+//                },
+//                {
+//                    textColor: "white",
+//                    height: 56,
+//                    url: "https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-32.png",
+//                    width: 56
+//                },
+//                {
+//                    textColor: "white",
+//                    height: 66,
+//                    url: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/m3.png",
+//                    width: 66
+//                },
+//                {
+//                    textColor: "white",
+//                    height: 78,
+//                    url: "https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-32.png",
+//                    width: 78
+//                },
+//                {
+//                    textColor: "white",
+//                    height: 90,
+//                    url: "https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-32.png",
+//                    width: 90
+//                }
+//            ]"styles": [
+//                {
+//                    textColor: "white",
+//                    height: 53,
+//                    url: "https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-32.png",
+//                    width: 53
+//                },
+//                {
+//                    textColor: "white",
+//                    height: 56,
+//                    url: "https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-32.png",
+//                    width: 56
+//                },
+//                {
+//                    textColor: "white",
+//                    height: 66,
+//                    url: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/m3.png",
+//                    width: 66
+//                },
+//                {
+//                    textColor: "white",
+//                    height: 78,
+//                    url: "https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-32.png",
+//                    width: 78
+//                },
+//                {
+//                    textColor: "white",
+//                    height: 90,
+//                    url: "https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-32.png",
+//                    width: 90
+//                }
+//            ]
         };
 
         this.alojamientos = [  //JSON con los alojamientos
