@@ -13,7 +13,7 @@ var MapaAlojamientos = (function () {
         this.mc = null; //inicializamos el cluster
         this.mcOptions = {  //Opciones del cluster
             "gridSize": 50,
-            "maxZoom": 15,
+            "maxZoom": 15
 //            "styles": [
 //                {
 //                    textColor: "white",
@@ -208,6 +208,7 @@ var MapaAlojamientos = (function () {
         }
 
         this.mc = new MarkerClusterer(this.map, this.todos, this.mcOptions);
+        this.map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(document.getElementById('map-legend'));
     };
 
     return cls;

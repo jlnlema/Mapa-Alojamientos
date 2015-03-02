@@ -2,6 +2,7 @@ var data = {
     "lat": 0,
     "long": 0,
     "zoom": 2,
+    "leyenda": true,
     "alojamientos": [
         {
             "titulo": "alojameinto1",
